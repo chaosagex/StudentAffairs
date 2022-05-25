@@ -1,0 +1,90 @@
+﻿@model IEnumerable<StudentAffairs.Models.Parent>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentEnglishName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentArabicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentNid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentMobilephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentQualification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentLanguageNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentNationalityNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @( (item.ParentType > 0) ? "Mother" : "Father")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentEnglishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentArabicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentNid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentMobilephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentQualification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentLanguageNavigation.LanguageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentNationalityNavigation.NatName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ParentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ParentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ParentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
