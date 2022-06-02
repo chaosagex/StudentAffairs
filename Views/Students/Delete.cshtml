@@ -13,215 +13,330 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentCode)
+            Nationality
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentCode)
+            @Html.DisplayFor(model => model.StudentNatNavigation.NatName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentNid)
+            National ID
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.StudentNid)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JoinYear)
+            Gender
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JoinYear)
+            @( (Model.Gender > 0) ? "Female" : "Male")
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StaffSon)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StaffSon)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParentsSeparated)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParentsSeparated)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SchoolAbrev)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SchoolAbrev)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentUpdate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentUpdate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentArabicFName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentArabicFName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentArabicMName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentArabicMName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentArabicLName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentArabicLName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentArabicFmName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentArabicFmName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEnglishFName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEnglishFName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEnglishMName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEnglishMName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEnglishLName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEnglishLName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEnglishFmName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEnglishFmName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
+            Date of Birth
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Dob)
-        </dd>
+        </dd> 
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthPlace)
+            Birth Place
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BirthPlace)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
+        </dd>   
+         <dt class = "col-sm-2">
+            الأسم الأول
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+            @Html.DisplayFor(model => model.StudentArabicFName)
+        </dd>    
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentAddress)
+            أسم الأب
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentArabicMName)
+        </dd>  
+        <dt class = "col-sm-2">
+            أسم الجد
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentArabicLName)
+        </dd>  
+        <dt class = "col-sm-2">
+            أسم العائلة
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentArabicFmName)
+        </dd>  
+        <dt class = "col-sm-2">
+            First Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentEnglishFName)
+        </dd>  
+        <dt class = "col-sm-2">
+            Father's name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentEnglishMName)
+        </dd>  
+        <dt class = "col-sm-2">
+            Last Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentEnglishLName)
+        </dd>  
+        <dt class = "col-sm-2">
+            Family Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentEnglishFmName)
+        </dd>  
+        <dt class = "col-sm-2">
+            Academic Year
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JoinYearNavigation.Name)
+        </dd>  
+        <dt class = "col-sm-2">
+            Branch
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentBranchNavigation.BranchName)
+        </dd>  
+        <dt class = "col-sm-2">
+            Applying For
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplyingForGradeNavigation.GradeName)
+        </dd> 
+        <dt class = "col-sm-2">
+            Old School
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OldSchool)
+        </dd> 
+        <dt class = "col-sm-2">
+            Old School Number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OldSchoolNumber)
+        </dd> 
+        <dt class = "col-sm-2">
+            Current Grade
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentGradeNavigation.GradeName)
+        </dd> 
+        <dt class = "col-sm-2">
+            Leaving Reason
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LeavingReason)
+        </dd> 
+        <dt class = "col-sm-2">
+            Applied Before?
+        </dt>
+        <dd class = "col-sm-10">
+            @( (Model.AppliedBefore > 0) ? "yes" : "No")
+            
+        </dd> 
+        <dt class = "col-sm-2">
+            Have Sibling?
+        </dt>
+        <dd class = "col-sm-10">
+            @( (Model.HaveSibling > 0) ? "yes" : "No")
+        </dd> 
+        <dt class = "col-sm-2">
+            Address Governrate
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentGovNavigation.GovName)
+        </dd> 
+        <dt class = "col-sm-2">
+            Address City
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CityNavigation.CityName)
+        </dd> 
+        <dt class = "col-sm-2">
+            Address
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.StudentAddress)
-        </dd>
+        </dd> 
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEmail)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEmail)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentPassword)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentPassword)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentAffairs1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentAffairs1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentAffairs2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentAffairs2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthCode)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmergencyContact)
+            Emergency Contact
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EmergencyContact)
-        </dd>
+        </dd> 
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmergencyPhone)
+            Emergency Phone
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EmergencyPhone)
-        </dd>
+        </dd> 
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CityNavigation)
+            Guardian
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CityNavigation.CityId)
-        </dd>
+            @Html.DisplayFor(model => model.GuardianNavigation.GuardianName)
+        </dd> 
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GuardianNavigation)
+            Are Parents Separated?
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GuardianNavigation.GuardianId)
+            @( (Model.ParentsSeparated > 0) ? "yes" : "No")
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReligonNavigation)
+            Religion
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReligonNavigation.ReligionId)
+            @Html.DisplayFor(model => model.ReligonNavigation.ReligionName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentBranchNavigation)
+            Subscribed to Bus?
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentBranchNavigation.BranchId)
+            @( (Model.SubscribeBus > 0) ? "yes" : "No")
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentClassNavigation)
+            Reference 1
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentClassNavigation.ClassId)
+            @Html.DisplayFor(model => model.ReferenceName1)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentGovNavigation)
+            Reference 1 Phone
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentGovNavigation.GovId)
+            @Html.DisplayFor(model => model.ReferencePhone1)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentGradeNavigation)
+            Reference 2
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentGradeNavigation.GradeId)
+            @Html.DisplayFor(model => model.ReferenceName2)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentNatNavigation)
+            Reference 2 Phone
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentNatNavigation.NatId)
+            @Html.DisplayFor(model => model.ReferencePhone2)
+        </dd>
+          <hr />
+           <h4>Father's information</h4>
+        <dt class = "col-sm-2">
+            Mobile Phone
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentMobilephone)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentStatusNavigation)
+            E-mail
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentStatusNavigation.StatusId)
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentEmail)
         </dd>
+        <dt class = "col-sm-2">
+            Nationality
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentNationalityNavigation.NatName)
+        </dd>
+        <dt class = "col-sm-2">
+            National ID
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentNid)
+        </dd>
+        <dt class = "col-sm-2">
+            Job
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentJob)
+        </dd>
+        <dt class = "col-sm-2">
+            Job Location
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentJobLocation)
+        </dd>
+        <dt class = "col-sm-2">
+            Qualification
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentQualificationNavigation.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Language
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentFatherNavigation.ParentLanguageNavigation.LanguageName)
+        </dd>
+       
+        <hr />
+           <h4>Mother's information</h4>
+            <dt class = "col-sm-2">
+            English Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentEnglishName)
+        </dd>
+        <dt class = "col-sm-2">
+            أسم الأم
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentArabicName)
+        </dd>
+        <dt class = "col-sm-2">
+            Mobile Phone
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentMobilephone)
+        </dd>
+        <dt class = "col-sm-2">
+            E-mail
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            Nationality
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentNationalityNavigation.NatName)
+        </dd>
+        <dt class = "col-sm-2">
+            National ID
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentNid)
+        </dd>
+        <dt class = "col-sm-2">
+            Job
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentJob)
+        </dd>
+        <dt class = "col-sm-2">
+            Job Location
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentJobLocation)
+        </dd>
+        <dt class = "col-sm-2">
+            Qualification
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentQualificationNavigation.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Language
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentMotherNavigation.ParentLanguageNavigation.LanguageName)
+        </dd>    
+
     </dl>
     
     <form asp-action="Delete">

@@ -7,56 +7,58 @@
 
 <h1>Index</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-<div class="col-md-2"><a asp-action="Create" class="btn btn-success">Add Student</a></div>
+
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StudentCode)
+                Student National Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentNid)
+                Status
+            </th>
+            <th>
+                parents separated?
+            </th>
+            
+            <th>
+                الأسم
+            </th>
+            <th>
+                أسم الأب
+            </th>
+            <th>
+                أسم الجد
+            </th>
+            <th>
+                أسم العائلة
             </th>
            
             <th>
-                @Html.DisplayNameFor(model => model.StudentUpdate)
+                Date of birth
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentArabicFName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentArabicMName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentArabicLName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentArabicFmName)
-            </th>
-           
+            
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
+            <th>
+                Address
+            </th>
             
-            <th>
-                @Html.DisplayNameFor(model => model.StudentAffairs1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentAffairs2)
-            </th>
            
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyContact)
+                Emergency Contact
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyPhone)
+                Emergency Phone
             </th>
             
+            
+            
             <th>
-                Guardian
+                Join Year
             </th>
             <th>
                 Religion
@@ -64,17 +66,14 @@
             <th>
                 Branch
             </th>
-            <th>
-                Class
-            </th>
-            
+           
             <th>
                 Grade
             </th>
-          
             <th>
-                Status
+                Mother
             </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -82,16 +81,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StudentCode)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.StudentNid)
             </td>
-            
-           
             <td>
-                @Html.DisplayFor(modelItem => item.StudentUpdate)
+                @Html.DisplayFor(modelItem => item.StudentStatusNavigation.StatusName)
             </td>
+            <td>
+                @( (item.Gender > 0) ? "yes" : "no")
+            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.StudentArabicFName)
             </td>
@@ -105,16 +103,15 @@
                 @Html.DisplayFor(modelItem => item.StudentArabicFmName)
             </td>
             
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
             
             <td>
                 @( (item.Gender > 0) ? "Female" : "Male")
             </td>
-            
             <td>
-                @Html.DisplayFor(modelItem => item.StudentAffairs1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentAffairs2)
+                @Html.DisplayFor(modelItem => item.StudentAddress)
             </td>
            
             <td>
@@ -124,8 +121,9 @@
                 @Html.DisplayFor(modelItem => item.EmergencyPhone)
             </td>
            
+           
             <td>
-                @Html.DisplayFor(modelItem => item.GuardianNavigation.GuardianName)
+                @Html.DisplayFor(modelItem => item.JoinYearNavigation.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReligonNavigation.ReligionName)
@@ -133,19 +131,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StudentBranchNavigation.BranchName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentClassNavigation.ClassName)
-            </td>
+            
             
             <td>
                 @Html.DisplayFor(modelItem => item.StudentGradeNavigation.GradeName)
             </td>
-            
             <td>
-                @Html.DisplayFor(modelItem => item.StudentStatusNavigation.StatusName)
+                @Html.DisplayFor(modelItem => item.StudentMotherNavigation.ParentArabicName)
             </td>
+           
             <td>
-                <a asp-action="Edit"  asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
             </td>

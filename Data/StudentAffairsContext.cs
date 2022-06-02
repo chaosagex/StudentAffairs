@@ -23,13 +23,14 @@ namespace StudentAffairs.Data
         public virtual DbSet<Govenante> Govenantes { get; set; } = null!;
         public virtual DbSet<Grade> Grades { get; set; } = null!;
         public virtual DbSet<Guardian> Guardians { get; set; } = null!;
+        public virtual DbSet<JoinYear> JoinYears { get; set; } = null!;
         public virtual DbSet<Language> Languages { get; set; } = null!;
         public virtual DbSet<Nationality> Nationalities { get; set; } = null!;
         public virtual DbSet<Parent> Parents { get; set; } = null!;
+        public virtual DbSet<Qualification> Qualifications { get; set; } = null!;
         public virtual DbSet<Religion> Religions { get; set; } = null!;
         public virtual DbSet<Status> Statuses { get; set; } = null!;
         public virtual DbSet<Student> Students { get; set; } = null!;
-        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -124,6 +125,18 @@ namespace StudentAffairs.Data
                     .HasColumnName("guardian_name");
             });
 
+            modelBuilder.Entity<JoinYear>(entity =>
+            {
+                entity.ToTable("joinYear");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(10)
+                    .HasColumnName("name")
+                    .IsFixedLength();
+            });
+
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.ToTable("languages");
@@ -158,7 +171,7 @@ namespace StudentAffairs.Data
 
                 entity.Property(e => e.ParentArabicName)
                     .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .HasColumnName("parent_arabic_name");
 
                 entity.Property(e => e.ParentEmail)
@@ -176,6 +189,11 @@ namespace StudentAffairs.Data
                     .IsUnicode(false)
                     .HasColumnName("parent_job");
 
+                entity.Property(e => e.ParentJobLocation)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("parent_job_location");
+
                 entity.Property(e => e.ParentLanguage).HasColumnName("parent_language");
 
                 entity.Property(e => e.ParentMobilephone)
@@ -186,15 +204,17 @@ namespace StudentAffairs.Data
                 entity.Property(e => e.ParentNationality).HasColumnName("parent_nationality");
 
                 entity.Property(e => e.ParentNid)
-                    .HasMaxLength(15)
+                    .HasMaxLength(14)
                     .IsUnicode(false)
                     .HasColumnName("parent_nid")
                     .IsFixedLength();
 
-                entity.Property(e => e.ParentQualification)
-                    .HasMaxLength(100)
+                entity.Property(e => e.ParentPassport)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("parent_qualification");
+                    .HasColumnName("parent_passport");
+
+                entity.Property(e => e.ParentQualification).HasColumnName("parent_qualification");
 
                 entity.Property(e => e.ParentType).HasColumnName("parent_type");
 
@@ -209,6 +229,24 @@ namespace StudentAffairs.Data
                     .HasForeignKey(d => d.ParentNationality)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_parents_nationality");
+
+                entity.HasOne(d => d.ParentQualificationNavigation)
+                    .WithMany(p => p.Parents)
+                    .HasForeignKey(d => d.ParentQualification)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_parents_qualifications");
+            });
+
+            modelBuilder.Entity<Qualification>(entity =>
+            {
+                entity.ToTable("qualifications");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<Religion>(entity =>
@@ -241,6 +279,10 @@ namespace StudentAffairs.Data
 
                 entity.Property(e => e.StudentId).HasColumnName("student_id");
 
+                entity.Property(e => e.AppliedBefore).HasColumnName("applied_before");
+
+                entity.Property(e => e.ApplyingForGrade).HasColumnName("applyingForGrade");
+
                 entity.Property(e => e.BirthCode)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -271,13 +313,46 @@ namespace StudentAffairs.Data
 
                 entity.Property(e => e.Guardian).HasColumnName("guardian");
 
-                entity.Property(e => e.JoinYear)
-                    .HasMaxLength(4)
+                entity.Property(e => e.HaveSibling).HasColumnName("have_sibling");
+
+                entity.Property(e => e.JoinYear).HasColumnName("join_year");
+
+                entity.Property(e => e.LeavingReason)
+                    .HasMaxLength(200)
                     .IsUnicode(false)
-                    .HasColumnName("join_year")
-                    .IsFixedLength();
+                    .HasColumnName("leaving_reason");
+
+                entity.Property(e => e.OldSchool)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("old_school");
+
+                entity.Property(e => e.OldSchoolNumber)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("old_school_number");
 
                 entity.Property(e => e.ParentsSeparated).HasColumnName("parents_separated");
+
+                entity.Property(e => e.ReferenceName1)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("reference_name1");
+
+                entity.Property(e => e.ReferenceName2)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("reference_name2");
+
+                entity.Property(e => e.ReferencePhone1)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("reference_phone1");
+
+                entity.Property(e => e.ReferencePhone2)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("reference_phone2");
 
                 entity.Property(e => e.Religon).HasColumnName("religon");
 
@@ -305,22 +380,22 @@ namespace StudentAffairs.Data
 
                 entity.Property(e => e.StudentArabicFName)
                     .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .HasColumnName("student_arabic_fName");
 
                 entity.Property(e => e.StudentArabicFmName)
                     .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .HasColumnName("student_arabic_fmName");
 
                 entity.Property(e => e.StudentArabicLName)
                     .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .HasColumnName("student_arabic_lName");
 
                 entity.Property(e => e.StudentArabicMName)
                     .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .HasColumnName("student_arabic_mName");
 
                 entity.Property(e => e.StudentBranch).HasColumnName("student_branch");
@@ -357,17 +432,26 @@ namespace StudentAffairs.Data
                     .IsUnicode(false)
                     .HasColumnName("student_english_mName");
 
+                entity.Property(e => e.StudentFather).HasColumnName("student_father");
+
                 entity.Property(e => e.StudentGov).HasColumnName("student_gov");
 
                 entity.Property(e => e.StudentGrade).HasColumnName("student_grade");
 
+                entity.Property(e => e.StudentMother).HasColumnName("student_mother");
+
                 entity.Property(e => e.StudentNat).HasColumnName("student_nat");
 
                 entity.Property(e => e.StudentNid)
-                    .HasMaxLength(15)
+                    .HasMaxLength(14)
                     .IsUnicode(false)
                     .HasColumnName("student_nid")
                     .IsFixedLength();
+
+                entity.Property(e => e.StudentPassport)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("student_passport");
 
                 entity.Property(e => e.StudentPassword)
                     .HasMaxLength(256)
@@ -378,6 +462,14 @@ namespace StudentAffairs.Data
                 entity.Property(e => e.StudentStatus).HasColumnName("student_status");
 
                 entity.Property(e => e.StudentUpdate).HasColumnName("student_update");
+
+                entity.Property(e => e.SubscribeBus).HasColumnName("subscribe_bus");
+
+                entity.HasOne(d => d.ApplyingForGradeNavigation)
+                    .WithMany(p => p.StudentApplyingForGradeNavigations)
+                    .HasForeignKey(d => d.ApplyingForGrade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_students_grades_applyingfor");
 
                 entity.HasOne(d => d.CityNavigation)
                     .WithMany(p => p.Students)
@@ -390,6 +482,12 @@ namespace StudentAffairs.Data
                     .HasForeignKey(d => d.Guardian)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_students_guardian");
+
+                entity.HasOne(d => d.JoinYearNavigation)
+                    .WithMany(p => p.Students)
+                    .HasForeignKey(d => d.JoinYear)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_students_joinYear");
 
                 entity.HasOne(d => d.ReligonNavigation)
                     .WithMany(p => p.Students)
@@ -409,6 +507,11 @@ namespace StudentAffairs.Data
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_students_classes");
 
+                entity.HasOne(d => d.StudentFatherNavigation)
+                    .WithMany(p => p.StudentStudentFatherNavigations)
+                    .HasForeignKey(d => d.StudentFather)
+                    .HasConstraintName("FK_students_Father");
+
                 entity.HasOne(d => d.StudentGovNavigation)
                     .WithMany(p => p.Students)
                     .HasForeignKey(d => d.StudentGov)
@@ -416,9 +519,14 @@ namespace StudentAffairs.Data
                     .HasConstraintName("FK_students_govenante");
 
                 entity.HasOne(d => d.StudentGradeNavigation)
-                    .WithMany(p => p.Students)
+                    .WithMany(p => p.StudentStudentGradeNavigations)
                     .HasForeignKey(d => d.StudentGrade)
                     .HasConstraintName("FK_students_grades");
+
+                entity.HasOne(d => d.StudentMotherNavigation)
+                    .WithMany(p => p.StudentStudentMotherNavigations)
+                    .HasForeignKey(d => d.StudentMother)
+                    .HasConstraintName("FK_students_Mother");
 
                 entity.HasOne(d => d.StudentNatNavigation)
                     .WithMany(p => p.Students)
@@ -431,30 +539,11 @@ namespace StudentAffairs.Data
                     .HasForeignKey(d => d.StudentStatus)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_students_status");
-
-                entity.HasMany(d => d.Parents)
-                    .WithMany(p => p.Students)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "StudentParent",
-                        l => l.HasOne<Parent>().WithMany().HasForeignKey("ParentId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_student_parent_parents"),
-                        r => r.HasOne<Student>().WithMany().HasForeignKey("StudentId").HasConstraintName("FK_student_parent_students"),
-                        j =>
-                        {
-                            j.HasKey("StudentId", "ParentId");
-
-                            j.ToTable("student_parent");
-
-                            j.IndexerProperty<int>("StudentId").HasColumnName("student_id");
-
-                            j.IndexerProperty<int>("ParentId").HasColumnName("parent_id");
-                        });
             });
 
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        
     }
 }

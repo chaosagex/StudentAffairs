@@ -8,13 +8,15 @@ namespace StudentAffairs.Models
         public Grade()
         {
             Classes = new HashSet<Class>();
-            Students = new HashSet<Student>();
+            StudentApplyingForGradeNavigations = new HashSet<Student>();
+            StudentStudentGradeNavigations = new HashSet<Student>();
         }
 
         public int GradeId { get; set; }
         public string GradeName { get; set; } = null!;
 
         public virtual ICollection<Class> Classes { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> StudentApplyingForGradeNavigations { get; set; }
+        public virtual ICollection<Student> StudentStudentGradeNavigations { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model StudentAffairs.Models.Student
+﻿@model StudentAffairs.Models.StudentView
 
 @{
     ViewData["Title"] = "Edit";
@@ -9,123 +9,26 @@
 
 <h4>Student</h4>
 <hr />
+<div class="container-fluid">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-sm-10">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StudentId" />
-            <div class="form-group">
-                <label asp-for="StudentBranch" class="control-label"></label>
-                <select asp-for="StudentBranch" class="form-control" asp-items="ViewBag.StudentBranch"></select>
+            <input type="hidden" asp-for="student.StudentId" />
+            <input type="hidden" asp-for="father.ParentId" />
+            <input type="hidden" asp-for="mother.ParentId" />
+            <div class="row">
+            <div class="col-4">
+                <label asp-for="student.StudentNat" class="control-label">Nationality</label>
+                <select asp-for="student.StudentNat" class ="form-control" asp-items="ViewBag.StudentNat"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentGrade" class="control-label"></label>
-                <select asp-for="StudentGrade" class="form-control" asp-items="ViewBag.StudentGrade"></select>
+            <div class="col-4">
+                <label asp-for="student.StudentNid" class="control-label">National ID</label>
+                <input asp-for="student.StudentNid" class="form-control" />
+                <span asp-validation-for="student.StudentNid" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentClass" class="control-label"></label>
-                <select asp-for="StudentClass" class="form-control" asp-items="ViewBag.StudentClass"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentCode" class="control-label"></label>
-                <input asp-for="StudentCode" class="form-control" />
-                <span asp-validation-for="StudentCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentNid" class="control-label"></label>
-                <input asp-for="StudentNid" class="form-control" />
-                <span asp-validation-for="StudentNid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentNat" class="control-label"></label>
-                <select asp-for="StudentNat" class="form-control" asp-items="ViewBag.StudentNat"></select>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="JoinYear" class="control-label"></label>
-                <input asp-for="JoinYear" class="form-control" />
-                <span asp-validation-for="JoinYear" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StaffSon" /> @Html.DisplayNameFor(model => model.StaffSon)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Guardian" class="control-label"></label>
-                <select asp-for="Guardian" class="form-control" asp-items="ViewBag.Guardian"></select>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ParentsSeparated" /> @Html.DisplayNameFor(model => model.ParentsSeparated)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="SchoolAbrev" class="control-label"></label>
-                <input asp-for="SchoolAbrev" class="form-control" />
-                <span asp-validation-for="SchoolAbrev" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StudentUpdate" /> @Html.DisplayNameFor(model => model.StudentUpdate)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentArabicFName" class="control-label"></label>
-                <input asp-for="StudentArabicFName" class="form-control" />
-                <span asp-validation-for="StudentArabicFName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentArabicMName" class="control-label"></label>
-                <input asp-for="StudentArabicMName" class="form-control" />
-                <span asp-validation-for="StudentArabicMName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentArabicLName" class="control-label"></label>
-                <input asp-for="StudentArabicLName" class="form-control" />
-                <span asp-validation-for="StudentArabicLName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentArabicFmName" class="control-label"></label>
-                <input asp-for="StudentArabicFmName" class="form-control" />
-                <span asp-validation-for="StudentArabicFmName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentEnglishFName" class="control-label"></label>
-                <input asp-for="StudentEnglishFName" class="form-control" />
-                <span asp-validation-for="StudentEnglishFName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentEnglishMName" class="control-label"></label>
-                <input asp-for="StudentEnglishMName" class="form-control" />
-                <span asp-validation-for="StudentEnglishMName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentEnglishLName" class="control-label"></label>
-                <input asp-for="StudentEnglishLName" class="form-control" />
-                <span asp-validation-for="StudentEnglishLName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentEnglishFmName" class="control-label"></label>
-                <input asp-for="StudentEnglishFmName" class="form-control" />
-                <span asp-validation-for="StudentEnglishFmName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Dob" class="control-label"></label>
-                <input asp-for="Dob" class="form-control" />
-                <span asp-validation-for="Dob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthPlace" class="control-label"></label>
-                <input asp-for="BirthPlace" class="form-control" />
-                <span asp-validation-for="BirthPlace" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentStatus" class="control-label"></label>
-                <select asp-for="StudentStatus" class="form-control" asp-items="ViewBag.StudentStatus"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
+            <div class="col-4">
+                 <label asp-for="student.Gender" class="control-label">Gender</label>
                 @{
                      List<SelectListItem> choices  = new List<SelectListItem>
         {
@@ -135,61 +38,301 @@
         };
                    
                 }
-                <select asp-for="Gender" class="form-control" asp-items=choices></select>
+                <select asp-for="student.Gender" class="form-control" asp-items=choices></select>
+            </div>
+            <div class="col-6">
+                 <label asp-for="student.Dob" class="control-label"></label>
+                <input asp-for="student.Dob" class="form-control" />
+                <span asp-validation-for="student.Dob" class="text-danger"></span>
+               
+            </div>
+            <div class="col-6">
+                <label asp-for="student.BirthPlace" class="control-label"></label>
+                <input asp-for="student.BirthPlace" class="form-control" />
+                <span asp-validation-for="student.BirthPlace" class="text-danger"></span>
                 
             </div>
+            <div class="col-3">
+                <label asp-for="student.StudentArabicFName" class="control-label">الأسم الأول</label>
+                <input asp-for="student.StudentArabicFName" class="form-control" />
+                <span asp-validation-for="student.StudentArabicFName" class="text-danger"></span>
+                
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentArabicMName" class="control-label">أسم الأب</label>
+                <input asp-for="student.StudentArabicMName" class="form-control" />
+                <span asp-validation-for="student.StudentArabicMName" class="text-danger"></span>
+                
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentArabicLName" class="control-label">أسم الجد</label>
+                <input asp-for="student.StudentArabicLName" class="form-control" />
+                <span asp-validation-for="student.StudentArabicLName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentArabicFmName" class="control-label">أسم العائلة</label>
+                <input asp-for="student.StudentArabicFmName" class="form-control" />
+                <span asp-validation-for="student.StudentArabicFmName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentEnglishFName" class="control-label">first name in english</label>
+                <input asp-for="student.StudentEnglishFName" class="form-control" />
+                <span asp-validation-for="student.StudentEnglishFName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentEnglishMName" class="control-label">Father's name in english'</label>
+                <input asp-for="student.StudentEnglishMName" class="form-control" />
+                <span asp-validation-for="student.StudentEnglishMName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentEnglishLName" class="control-label">Last name in english</label>
+                <input asp-for="student.StudentEnglishLName" class="form-control" />
+                <span asp-validation-for="student.StudentEnglishLName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.StudentEnglishFmName" class="control-label">Family name in English</label>
+                <input asp-for="student.StudentEnglishFmName" class="form-control" />
+                <span asp-validation-for="student.StudentEnglishFmName" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="student.JoinYear" class="control-label">Academic Year</label>
+                <select asp-for="student.JoinYear" class ="form-control" asp-items="ViewBag.JoinYear"></select>
+            </div>
+            <div class="col-4">
+                <label asp-for="student.StudentBranch" class="control-label">Branch</label>
+                <select asp-for="student.StudentBranch" class ="form-control" asp-items="ViewBag.StudentBranch"></select>
+            </div>
+            <div class="col-4">
+                <label asp-for="student.ApplyingForGrade" class="control-label">Applying for Grade</label>
+                <select asp-for="student.ApplyingForGrade" class ="form-control" asp-items="ViewBag.ApplyingForGrade"></select>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.OldSchool" class="control-label">Current School</label>
+                <input asp-for="student.OldSchool" class="form-control" />
+                <span asp-validation-for="student.OldSchool" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+               <label asp-for="student.OldSchoolNumber" class="control-label"></label>
+                <input asp-for="student.OldSchoolNumber" class="form-control" />
+                <span asp-validation-for="student.OldSchoolNumber" class="text-danger"></span>
+            </div>
             
-            <div class="form-group">
-                <label asp-for="Religon" class="control-label"></label>
-                <select asp-for="Religon" class="form-control" asp-items="ViewBag.Religon"></select>
+            <div class="col-3">
+                <label asp-for="student.StudentGrade" class="control-label">Current Grade</label>
+                <select asp-for="student.StudentGrade" class ="form-control" asp-items="ViewBag.StudentGrade"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <select asp-for="City" class="form-control" asp-items="ViewBag.City"></select>
+            <div class="col-3">
+                <label asp-for="student.LeavingReason" class="control-label"></label>
+                <input asp-for="student.LeavingReason" class="form-control" />
+                <span asp-validation-for="student.LeavingReason" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentAddress" class="control-label"></label>
-                <input asp-for="StudentAddress" class="form-control" />
-                <span asp-validation-for="StudentAddress" class="text-danger"></span>
+            <div class="col-6">
+                <label asp-for="student.AppliedBefore" class="control-label">Applied before?</label>
+                @{
+                     choices  = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = "no" },
+            new SelectListItem { Value = "1", Text = "yes" },
+            
+        };
+                   
+                }
+                <select asp-for="student.AppliedBefore" class="form-control" asp-items=choices></select>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentEmail" class="control-label"></label>
-                <input asp-for="StudentEmail" class="form-control" />
-                <span asp-validation-for="StudentEmail" class="text-danger"></span>
+            <div class="col-6">
+                <label asp-for="student.HaveSibling" class="control-label">the student has a sibling</label>
+                @{
+                     choices  = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = "no" },
+            new SelectListItem { Value = "1", Text = "yes" },
+            
+        };
+                   
+                }
+                <select asp-for="student.HaveSibling" class="form-control" asp-items=choices></select>
+                
             </div>
-            <div class="form-group">
-                <label asp-for="StudentPassword" class="control-label"></label>
-                <input asp-for="StudentPassword" class="form-control" />
-                <span asp-validation-for="StudentPassword" class="text-danger"></span>
+            <div class="col-4">
+                <label asp-for="student.StudentGov" class="control-label">Address Governorate</label>
+                <select asp-for="student.StudentGov" class ="form-control" asp-items="ViewBag.StudentGov"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentAffairs1" class="control-label"></label>
-                <input asp-for="StudentAffairs1" class="form-control" />
-                <span asp-validation-for="StudentAffairs1" class="text-danger"></span>
+            <div class="col-4">
+                <label asp-for="student.City" class="control-label">Address City</label>
+                <select asp-for="student.City" class ="form-control" asp-items="ViewBag.City"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentAffairs2" class="control-label"></label>
-                <input asp-for="StudentAffairs2" class="form-control" />
-                <span asp-validation-for="StudentAffairs2" class="text-danger"></span>
+            <div class="col-4">
+                <label asp-for="student.StudentAddress" class="control-label">Address</label>
+                <input asp-for="student.StudentAddress" class="form-control" />
+                <span asp-validation-for="student.StudentAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BirthCode" class="control-label"></label>
-                <input asp-for="BirthCode" class="form-control" />
-                <span asp-validation-for="BirthCode" class="text-danger"></span>
+            <div class="col-6">
+                <label asp-for="student.EmergencyContact" class="control-label">Emergency Contact</label>
+                <input asp-for="student.EmergencyContact" class="form-control" />
+                <span asp-validation-for="student.EmergencyContact" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentGov" class="control-label"></label>
-                <select asp-for="StudentGov" class="form-control" asp-items="ViewBag.StudentGov"></select>
+            <div class="col-6">
+                <label asp-for="student.EmergencyPhone" class="control-label">Emergency Phone</label>
+                <input asp-for="student.EmergencyPhone" class="form-control" />
+                <span asp-validation-for="student.EmergencyPhone" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContact" class="control-label"></label>
-                <input asp-for="EmergencyContact" class="form-control" />
-                <span asp-validation-for="EmergencyContact" class="text-danger"></span>
+            <div class="col-4">
+                <label asp-for="student.Guardian" class="control-label"></label>
+                <select asp-for="student.Guardian" class ="form-control" asp-items="ViewBag.Guardian"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="EmergencyPhone" class="control-label"></label>
-                <input asp-for="EmergencyPhone" class="form-control" />
-                <span asp-validation-for="EmergencyPhone" class="text-danger"></span>
+            <div class="col-4">
+            <label asp-for="student.ParentsSeparated" class="control-label">Are parents separated?</label>
+                @{
+                     choices  = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = "no" },
+            new SelectListItem { Value = "1", Text = "yes" },
+            
+        };
+                   
+                }
+                <select asp-for="student.ParentsSeparated" class="form-control" asp-items=choices></select>
+            </div>
+            <div class="col-4">
+                <label asp-for="student.Religon" class="control-label"></label>
+                <select asp-for="student.Religon" class ="form-control" asp-items="ViewBag.Religon"></select>
+            </div>
+            
+           <div class="form-group form-check">
+           <label asp-for="student.SubscribeBus" class="control-label">Subscribe to bus service?</label>
+                @{
+                     choices  = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = "no" },
+            new SelectListItem { Value = "1", Text = "yes" },
+            
+        };
+                   
+                }
+                <select asp-for="student.SubscribeBus" class="form-control" asp-items=choices></select>
+            </div>
+            
+            <hr />
+           <h4>Father's information</h4>
+                   
+           <div class="col-6">
+                <label asp-for="father.ParentMobilephone" class="control-label">Mobile Phone</label>
+                <input asp-for="father.ParentMobilephone" class="form-control" />
+                <span asp-validation-for="father.ParentMobilephone" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+                <label asp-for="father.ParentEmail" class="control-label">E-mail</label>
+                <input asp-for="father.ParentEmail" class="form-control" />
+                <span asp-validation-for="father.ParentEmail" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="father.ParentType" value="0" />
+            <div class="col-6">
+                <label asp-for="father.ParentNationality" class="control-label">Nationality</label>
+                <select asp-for="father.ParentNationality" class ="form-control" asp-items="ViewBag.ParentNationality"></select>
+            </div>
+            <div class="col-6">
+                <label asp-for="father.ParentNid" class="control-label">National ID</label>
+                <input asp-for="father.ParentNid" class="form-control" />
+                <span asp-validation-for="father.ParentNid" class="text-danger"></span>
+            </div>
+            
+            <div class="col-3">
+                <label asp-for="father.ParentJob" class="control-label">Job</label>
+                <input asp-for="father.ParentJob" class="form-control" />
+                <span asp-validation-for="father.ParentJob" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="father.ParentJobLocation" class="control-label">Place of work</label>
+                <input asp-for="father.ParentJobLocation" class="form-control" />
+                <span asp-validation-for="father.ParentJobLocation" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+            
+            <label asp-for="father.ParentQualification" class="control-label">Qualification</label>
+                <select asp-for="father.ParentQualification" class ="form-control" asp-items="ViewBag.ParentQualification"></select>
+            </div>
+            <div class="col-3">
+                <label asp-for="father.ParentLanguage" class="control-label"></label>
+                <select asp-for="father.ParentLanguage" class ="form-control" asp-items="ViewBag.ParentLanguage"></select>
+            </div>
+            
+            
+            <hr />
+           <h4>Mother's information</h4>
+             <input type="hidden" asp-for="mother.ParentType" value="1" />
+                
+            
+            
+            <div class="col-3">
+                <label asp-for="mother.ParentEnglishName" class="control-label">Mother's full name in english</label>
+                <input asp-for="mother.ParentEnglishName" class="form-control" />
+                <span asp-validation-for="mother.ParentEnglishName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="mother.ParentArabicName" class="control-label">أسم الأم</label>
+                <input asp-for="mother.ParentArabicName" class="form-control" />
+                <span asp-validation-for="mother.ParentArabicName" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="mother.ParentMobilephone" class="control-label">Mobile Phone</label>
+                <input asp-for="mother.ParentMobilephone" class="form-control" />
+                <span asp-validation-for="mother.ParentMobilephone" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="mother.ParentEmail" class="control-label">E-mail</label>
+                <input asp-for="mother.ParentEmail" class="form-control" />
+                <span asp-validation-for="mother.ParentEmail" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+                <label asp-for="mother.ParentNationality" class="control-label">Nationality</label>
+                <select asp-for="mother.ParentNationality" class ="form-control" asp-items="ViewBag.ParentNationality"></select>
+            </div>
+            <div class="col-6">
+                <label asp-for="mother.ParentNid" class="control-label">National ID</label>
+                <input asp-for="mother.ParentNid" class="form-control" />
+                <span asp-validation-for="mother.ParentNid" class="text-danger"></span>
+            </div>
+            
+            <div class="col-3">
+                <label asp-for="mother.ParentJob" class="control-label">Job</label>
+                <input asp-for="mother.ParentJob" class="form-control" />
+                <span asp-validation-for="mother.ParentJob" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="mother.ParentJobLocation" class="control-label">Job Location</label>
+                <input asp-for="mother.ParentJobLocation" class="form-control" />
+                <span asp-validation-for="mother.ParentJobLocation" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+            <label asp-for="mother.ParentQualification" class="control-label"></label>
+                <select asp-for="mother.ParentQualification" class ="form-control" asp-items="ViewBag.ParentQualification"></select>
+            </div>
+            <div class="col-3">
+                <label asp-for="mother.ParentLanguage" class="control-label"></label>
+                <select asp-for="mother.ParentLanguage" class ="form-control" asp-items="ViewBag.ParentLanguage"></select>
+            </div>
+            <hr />
+           <h4>Reference Information</h4>
+            <div class="col-3">
+                <label asp-for="student.ReferenceName1" class="control-label">Contact (1) Name</label>
+                <input asp-for="student.ReferenceName1" class="form-control" />
+                <span asp-validation-for="student.ReferenceName1" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.ReferencePhone1" class="control-label">Contact (1) Phone</label>
+                <input asp-for="student.ReferencePhone1" class="form-control" />
+                <span asp-validation-for="student.ReferencePhone1" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.ReferenceName2" class="control-label">Contact (2) Name</label>
+                <input asp-for="student.ReferenceName2" class="form-control" />
+                <span asp-validation-for="student.ReferenceName2" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="student.ReferencePhone2" class="control-label">Contact (2) Phone</label>
+                <input asp-for="student.ReferencePhone2" class="form-control" />
+                <span asp-validation-for="student.ReferencePhone2" class="text-danger"></span>
+            </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
